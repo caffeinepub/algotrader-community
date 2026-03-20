@@ -1,0 +1,168 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+    --background: 0.09 0.004 260;
+    --foreground: 0.93 0.005 260;
+    --card: 0.14 0.005 260;
+    --card-foreground: 0.93 0.005 260;
+    --popover: 0.14 0.005 260;
+    --popover-foreground: 0.93 0.005 260;
+    --primary: 0.77 0.1 78;
+    --primary-foreground: 0.1 0.005 260;
+    --secondary: 0.18 0.005 260;
+    --secondary-foreground: 0.93 0.005 260;
+    --muted: 0.18 0.005 260;
+    --muted-foreground: 0.62 0.01 260;
+    --accent: 0.22 0.006 260;
+    --accent-foreground: 0.93 0.005 260;
+    --destructive: 0.65 0.22 25;
+    --destructive-foreground: 0.98 0 0;
+    --border: 0.24 0.008 260;
+    --input: 0.22 0.008 260;
+    --ring: 0.77 0.1 78;
+    --success: 0.73 0.19 149;
+    --gold: 0.77 0.1 78;
+    --gold-bright: 0.82 0.11 82;
+    --chart-1: 0.77 0.1 78;
+    --chart-2: 0.73 0.19 149;
+    --chart-3: 0.65 0.22 25;
+    --chart-4: 0.6 0.12 180;
+    --chart-5: 0.55 0.12 270;
+    --sidebar: 0.12 0.005 260;
+    --sidebar-foreground: 0.93 0.005 260;
+    --sidebar-primary: 0.77 0.1 78;
+    --sidebar-primary-foreground: 0.1 0.005 260;
+    --sidebar-accent: 0.18 0.005 260;
+    --sidebar-accent-foreground: 0.93 0.005 260;
+    --sidebar-border: 0.24 0.008 260;
+    --sidebar-ring: 0.77 0.1 78;
+  }
+
+  .dark {
+    --background: 0.09 0.004 260;
+    --foreground: 0.93 0.005 260;
+    --card: 0.14 0.005 260;
+    --card-foreground: 0.93 0.005 260;
+    --popover: 0.14 0.005 260;
+    --popover-foreground: 0.93 0.005 260;
+    --primary: 0.77 0.1 78;
+    --primary-foreground: 0.1 0.005 260;
+    --secondary: 0.18 0.005 260;
+    --secondary-foreground: 0.93 0.005 260;
+    --muted: 0.18 0.005 260;
+    --muted-foreground: 0.62 0.01 260;
+    --accent: 0.22 0.006 260;
+    --accent-foreground: 0.93 0.005 260;
+    --destructive: 0.65 0.22 25;
+    --destructive-foreground: 0.98 0 0;
+    --border: 0.24 0.008 260;
+    --input: 0.22 0.008 260;
+    --ring: 0.77 0.1 78;
+    --chart-1: 0.77 0.1 78;
+    --chart-2: 0.73 0.19 149;
+    --chart-3: 0.65 0.22 25;
+    --chart-4: 0.6 0.12 180;
+    --chart-5: 0.55 0.12 270;
+    --sidebar: 0.12 0.005 260;
+    --sidebar-foreground: 0.93 0.005 260;
+    --sidebar-primary: 0.77 0.1 78;
+    --sidebar-primary-foreground: 0.1 0.005 260;
+    --sidebar-accent: 0.18 0.005 260;
+    --sidebar-accent-foreground: 0.93 0.005 260;
+    --sidebar-border: 0.24 0.008 260;
+    --sidebar-ring: 0.77 0.1 78;
+  }
+
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer utilities {
+  .text-gold {
+    color: oklch(var(--gold));
+  }
+  .text-gold-bright {
+    color: oklch(var(--gold-bright));
+  }
+  .bg-gold {
+    background-color: oklch(var(--gold));
+  }
+  .border-gold {
+    border-color: oklch(var(--gold));
+  }
+  .fill-gold {
+    fill: oklch(var(--gold));
+  }
+  .text-success {
+    color: oklch(var(--success));
+  }
+  .text-destructive-trade {
+    color: oklch(var(--destructive));
+  }
+  .bg-success-subtle {
+    background-color: oklch(var(--success) / 0.12);
+  }
+  .bg-destructive-subtle {
+    background-color: oklch(var(--destructive) / 0.12);
+  }
+  .glass-card {
+    background: oklch(var(--card) / 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid oklch(var(--border));
+  }
+  .hero-gradient {
+    background: radial-gradient(
+        ellipse 120% 80% at 50% 0%,
+        oklch(0.22 0.04 78 / 0.18) 0%,
+        oklch(var(--background)) 60%
+      ),
+      linear-gradient(
+        180deg,
+        oklch(0.12 0.008 260) 0%,
+        oklch(var(--background)) 100%
+      );
+  }
+  .chart-grid {
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+        to right,
+        oklch(var(--border) / 0.3) 0px,
+        oklch(var(--border) / 0.3) 1px,
+        transparent 1px,
+        transparent 80px
+      ),
+      repeating-linear-gradient(
+        to bottom,
+        oklch(var(--border) / 0.3) 0px,
+        oklch(var(--border) / 0.3) 1px,
+        transparent 1px,
+        transparent 60px
+      );
+    opacity: 0.35;
+  }
+  .shadow-gold {
+    box-shadow: 0 0 30px oklch(0.77 0.1 78 / 0.25);
+  }
+  .font-display {
+    font-family: "Bricolage Grotesque", sans-serif;
+  }
+}
