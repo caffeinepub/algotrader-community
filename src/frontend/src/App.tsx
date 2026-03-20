@@ -12,11 +12,18 @@ import {
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-const WHATSAPP_URL = "https://wa.me/1234567890";
+const WHATSAPP_URL = "https://chat.whatsapp.com/GAjk7yjiLG125WpJ8yLixd";
+
+declare global {
+  interface Window {
+    fbq?: (...args: unknown[]) => void;
+  }
+}
 
 function trackEvent(event: string) {
-  console.log(`[Meta Pixel] Event: ${event}`);
-  // TODO: Replace with real Meta Pixel call: fbq('track', event)
+  if (typeof window.fbq === "function") {
+    window.fbq("track", event);
+  }
 }
 
 function openWhatsApp() {
@@ -119,7 +126,7 @@ const testimonials = [
     initials: "SC",
     name: "Sarah C.",
     location: "Lagos, Nigeria",
-    text: "As a complete beginner I had no idea where to start. AlgoEdge\u2019s setup guidance made it easy. Two months in and I\u2019m seeing steady returns.",
+    text: "As a complete beginner I had no idea where to start. razrmarket\u2019s setup guidance made it easy. Two months in and I\u2019m seeing steady returns.",
     stars: 5,
   },
   {
@@ -267,7 +274,7 @@ export default function App() {
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
           <div className="font-display font-bold text-xl text-gold tracking-tight">
-            AlgoEdge
+            razrmarket
           </div>
           <nav className="hidden md:flex items-center gap-6 text-sm text-muted-foreground">
             <button
@@ -559,10 +566,10 @@ export default function App() {
       <section id="benefits" className="py-20 sm:py-28 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
           <p className="text-center text-xs uppercase tracking-widest text-gold font-semibold mb-3">
-            Why AlgoEdge
+            Why razrmarket
           </p>
           <h2 className="font-display font-bold text-3xl sm:text-4xl text-center text-foreground uppercase mb-14">
-            Why Smart Traders Choose AlgoEdge
+            Why Smart Traders Choose razrmarket
           </h2>
           <div className="grid sm:grid-cols-2 gap-5">
             {benefits.map((b, i) => (
@@ -613,7 +620,7 @@ export default function App() {
             Ready to Trade Smarter?
           </h2>
           <p className="text-muted-foreground text-lg mb-10">
-            Join 500+ members who are already using AlgoEdge to grow their
+            Join 500+ members who are already using razrmarket to grow their
             capital systematically.
           </p>
           <button
@@ -653,7 +660,7 @@ export default function App() {
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
             <div className="font-display font-bold text-xl text-gold">
-              AlgoEdge
+              razrmarket
             </div>
             <div className="flex gap-6 text-sm text-muted-foreground">
               <button
@@ -681,12 +688,13 @@ export default function App() {
           </div>
           <p className="text-xs text-muted-foreground/60 text-center max-w-2xl mx-auto mb-4 leading-relaxed">
             Trading carries risk and is not suitable for all investors. Past
-            performance does not guarantee future results. AlgoEdge does not
+            performance does not guarantee future results. razrmarket does not
             provide financial advice. Always seek independent advice before
             investing.
           </p>
           <p className="text-xs text-muted-foreground/50 text-center">
-            &copy; {new Date().getFullYear()}. Built with \u2764\ufe0f using{" "}
+            &copy; {new Date().getFullYear()} razrmarket. Built with
+            \u2764\ufe0f using{" "}
             <a
               href={`https://caffeine.ai?utm_source=caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(window.location.hostname)}`}
               target="_blank"
